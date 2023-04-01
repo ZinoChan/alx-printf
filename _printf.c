@@ -9,19 +9,12 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int length = 0;
-	char buffer[1024];
-	int buff_idx = 0;
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(args, format);
-	length = _print_format(format, args, buffer, &buff_idx);
+	length = _print_format(format, args);
 	va_end(args);
-	if(buff_idx > 0)
-	{
-		write(1, buffer, buff_idx);
-		length += buff_idx;
-	}
 	return (length);
 }

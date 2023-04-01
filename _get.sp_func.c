@@ -6,7 +6,7 @@
 * Return: pointer to the correct function
 **/
 
-int (*get_sp_func(char format))(va_list, char *buffer, int *buffer_index)
+int (*get_sp_func(char format))(va_list)
 {
 	int i;
 		print_t sp[] = {

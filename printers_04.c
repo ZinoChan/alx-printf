@@ -5,7 +5,7 @@
 * @args: string argument
 * Return: bytes printed
 **/
-int print_S(va_list args, char *buffer, int *buffer_index)
+int print_S(va_list args)
 {
 	unsigned int i, count = 0;
 	char *str;
@@ -17,20 +17,20 @@ int print_S(va_list args, char *buffer, int *buffer_index)
 	{
 		if (str[i] < 32 || str[i] >= 127)
 		{
-			_write('\\', buffer, buffer_index);
-			_write('x', buffer, buffer_index);
+			_write('\\');
+			_write('x');
 			count += 2;
 
 			if (str[i] > 0 && str[i] < HEX_BASE)
 			{
-				_write('0', buffer, buffer_index);
+				_write('0');
 				count++;
 			}
-			count += print_unsigned_hex(str[i], 1, buffer, buffer_index);
+			count += print_unsigned_hex(str[i], 1);
 		}
 		else
 		{
-			_write(str[i], buffer, buffer_index);
+			_write(str[i]);
 			count++;
 		}
 	}
@@ -43,7 +43,7 @@ int print_S(va_list args, char *buffer, int *buffer_index)
 * @args: pointer arguments
 * Return: number of bytes printed
 **/
-int print_p(va_list args, char *buffer, int *buffer_index)
+int print_p(va_list args)
 {
 	unsigned long int n;
 	int count = 0;
@@ -56,9 +56,9 @@ int print_p(va_list args, char *buffer, int *buffer_index)
 		return (5);
 	}
 
-	_write('0', buffer, buffer_index);
-	_write('x', buffer, buffer_index);
-	count += print_unsigned_hex(n, 0, buffer, buffer_index) + 2;
+	_write('0');
+	_write('x');
+	count += print_unsigned_hex(n, 0) + 2;
 	return (count);
 }
 

@@ -7,16 +7,9 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _write(char c, char *buffer, int *buffer_index)
+int _write(char c)
 {
-	if(*buffer_index >= BUFFER_SIZE)
-	{
-		write(1, buffer, 1024);
-		*buffer_index = 0;
-	}
-	buffer[*buffer_index] = c;
-	(*buffer_index)++;
-	return (1);
+	return (write(1, &c, 1));
 }
 
 

@@ -7,11 +7,11 @@
  * Return: Number of characters printed
  */
 
-int print_uns_hex(va_list args, char *buffer, int *buffer_index)
+int print_uns_hex(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
 
-	return (print_unsigned_hex(n, 0, buffer, buffer_index));
+	return (print_unsigned_hex(n, 0));
 }
 
 
@@ -22,9 +22,9 @@ int print_uns_hex(va_list args, char *buffer, int *buffer_index)
  * Return: Number of characters printed
  */
 
-int print_uns_HEX(va_list args, char *buffer, int *buffer_index)
+int print_uns_HEX(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
 
-	return (print_unsigned_hex(n, 1, buffer, buffer_index));
+	return (print_unsigned_hex(n, 1));
 }

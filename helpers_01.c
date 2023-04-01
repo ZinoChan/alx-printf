@@ -25,11 +25,11 @@ int get_digit_count(unsigned long int num, unsigned int base)
  * @base: number base
  * Return: void
  */
-void write_number(unsigned int num, unsigned int base, char *buffer, int *buffer_index)
+void write_number(unsigned int num, unsigned int base)
 {
 	if (num >= base)
-		write_number(num / base, base, buffer, buffer_index);
-	_write('0' + (num % base), buffer, buffer_index);
+		write_number(num / base, base);
+	_write('0' + (num % base));
 }
 
 /**
@@ -38,7 +38,7 @@ void write_number(unsigned int num, unsigned int base, char *buffer, int *buffer
  * @uppr: if hex is upper 0 else 1
  * Return: Number of digits printed
  */
-int print_unsigned_hex(unsigned long int num, int uppr, char *buffer, int *buffer_index)
+int print_unsigned_hex(unsigned long int num, int uppr)
 {
 	int count = 0, i;
 	int digit_count = get_digit_count(num, HEX_BASE);
@@ -50,7 +50,7 @@ int print_unsigned_hex(unsigned long int num, int uppr, char *buffer, int *buffe
 
 	if (num < 1)
 	{
-		_write('0', buffer, buffer_index);
+		_write('0');
 		return (1);
 	}
 
@@ -62,7 +62,7 @@ int print_unsigned_hex(unsigned long int num, int uppr, char *buffer, int *buffe
 	}
 
 	for (i = 0; i < digit_count; i++)
-		_write(ptr[i], buffer, buffer_index);
+		_write(ptr[i]);
 	free(ptr);
 	return (count);
 }
