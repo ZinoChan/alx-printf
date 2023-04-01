@@ -3,7 +3,8 @@
 /**
  * print_uns_hex - Prints unsigned hex
  * @args: arguments list containing the integer to print
- *
+ * @buffer: The buffer to write the number to.
+ * @buffer_index: A pointer to an index in the buffer to write to.
  * Return: Number of characters printed
  */
 
@@ -18,7 +19,8 @@ int print_uns_hex(va_list args, char *buffer, int *buffer_index)
 /**
  * print_uns_HEX - Prints unsigned HEX
  * @args: arguments list containing the integer to print
- *
+ * @buffer: The buffer to write the number to.
+ * @buffer_index: A pointer to an index in the buffer to write to.
  * Return: Number of characters printed
  */
 

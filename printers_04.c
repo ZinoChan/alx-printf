@@ -3,6 +3,8 @@
 /**
 * print_S - print non printable characters
 * @args: string argument
+* @buffer: The buffer to write the number to.
+* @buffer_index: A pointer to an index in the buffer to write to.
 * Return: bytes printed
 **/
 int print_S(va_list args, char *buffer, int *buffer_index)
@@ -41,6 +43,8 @@ int print_S(va_list args, char *buffer, int *buffer_index)
 /**
 * print_p - print pointer address
 * @args: pointer arguments
+* @buffer: The buffer to write the number to.
+* @buffer_index: A pointer to an index in the buffer to write to.
 * Return: number of bytes printed
 **/
 int print_p(va_list args, char *buffer, int *buffer_index)

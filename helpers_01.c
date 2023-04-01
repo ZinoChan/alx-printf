@@ -23,9 +23,12 @@ int get_digit_count(unsigned long int num, unsigned int base)
  * write_number - write every digit of number
  * @num: number
  * @base: number base
+ * @buffer: The buffer to write the number to.
+ * @buffer_index: A pointer to an index in the buffer to write to.
  * Return: void
  */
-void write_number(unsigned int num, unsigned int base, char *buffer, int *buffer_index)
+void write_number(unsigned int num, unsigned int base,
+					char *buffer, int *buffer_index)
 {
 	if (num >= base)
 		write_number(num / base, base, buffer, buffer_index);
@@ -36,9 +39,12 @@ void write_number(unsigned int num, unsigned int base, char *buffer, int *buffer
  * print_unsigned_hex - print hex of uns integer
  * @num: number to print
  * @uppr: if hex is upper 0 else 1
+ * @buffer: The buffer to write the number to.
+ * @buffer_index: A pointer to an index in the buffer to write to.
  * Return: Number of digits printed
  */
-int print_unsigned_hex(unsigned long int num, int uppr, char *buffer, int *buffer_index)
+int print_unsigned_hex(unsigned long int num, int uppr,
+char *buffer, int *buffer_index)
 {
 	int count = 0, i;
 	int digit_count = get_digit_count(num, HEX_BASE);

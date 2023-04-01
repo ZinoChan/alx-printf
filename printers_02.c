@@ -4,7 +4,8 @@
 /**
   * print_binary - Prints a int converted to binary
   * @args: A list of variadic arguments
-  *
+  * @buffer: The buffer to write the number to.
+  * @buffer_index: A pointer to an index in the buffer to write to.
   * Return: The number of printed digits
   */
 
@@ -26,7 +27,8 @@ int print_binary(va_list args, char *buffer, int *buffer_index)
 /**
  * print_binary_helper - Prints the binary format of a given number
  * @n: The number to convert
- *
+ * @buffer: The buffer to write the number to.
+ * @buffer_index: A pointer to an index in the buffer to write to.
  * Return: The number of printed digits
  */
 int print_binary_helper(int n, char *buffer, int *buffer_index)
@@ -49,7 +51,8 @@ int print_binary_helper(int n, char *buffer, int *buffer_index)
 /**
  * print_uns_int - prints unsigned integer
  * @args: arguments list containing the integer to print
- *
+ * @buffer: The buffer to write the number to.
+ * @buffer_index: A pointer to an index in the buffer to write to.
  * Return: Number of characters printed
  */
 
@@ -71,7 +74,8 @@ int print_uns_int(va_list args, char *buffer, int *buffer_index)
 /**
  * print_octal - prints unsigned octal
  * @args: arguments list containing the integer to print
- *
+ * @buffer: The buffer to write the number to.
+ * @buffer_index: A pointer to an index in the buffer to write to.
  * Return: Number of characters printed
  */
 int print_octal(va_list args, char *buffer, int *buffer_index)

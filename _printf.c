@@ -2,7 +2,6 @@
 /**
  * _printf - function my printf
  * @format: string whit format to print
- *
  * Return: number of chars that print
  */
 int _printf(const char *format, ...)
@@ -18,7 +17,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	length = _print_format(format, args, buffer, &buff_idx);
 	va_end(args);
-	if(buff_idx > 0)
+	if (buff_idx > 0)
 	{
 		write(1, buffer, buff_idx);
 		buff_idx = 0;
