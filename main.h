@@ -38,12 +38,12 @@ int print_p(va_list args);
 int print_int(va_list args);
 int recursive_print(int n);
 int print_binary(va_list args);
-int print_binary_helper(int n);
+
 
 /*Helpers*/
 int get_digit_count(unsigned long int num, unsigned int base);
 void write_number(unsigned int num, unsigned int base);
 int print_unsigned_hex(unsigned long int num, int uppr);
-int is_printable(char c);
+
 
 #endif
