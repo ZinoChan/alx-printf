@@ -1,5 +1,6 @@
 #include "main.h"
-void print_digits(int number, int count, int is_negative);
+
+
 /**
   * print_chr - Prints a char
   * @args: A list of variadic arguments
@@ -50,36 +51,37 @@ int print_str(va_list args)
   */
 int print_int(va_list args)
 {
-	int num = va_arg(args, int);
-	int i = 0, j;
+	int num = va_arg(args, int), i = 0, digit;
+	int is_negative = num < 0;
+	unsigned int abs = is_negative ? -num : num;
+	unsigned int divider = 1;
 
-	if (num < 0)
+	if (abs <= 9)
 	{
+		_write(is_negative ? '-' : '0' + abs);
+		return (1 + is_negative);
+	}
+
+	while (divider <= abs / 10)
+		divider *= 10;
+
+	if (is_negative)
 		_write('-');
-		num = -num;
-		i++;
-	}
-	if (num == 0)
-	{
-		_write('0');
-		i++;
-	} else
-	{
-		int digits[10];
-		int count = 0;
 
-		while (num != 0)
-		{
-			digits[count++] = num % 10;
-			num /= 10;
-		}
-		for (j = count - 1; j >= 0; j--)
-		{
-			_write(digits[j] + '0');
-			i++;
-		}
+	while (divider > 0)
+	{
+		digit = abs / divider;
+		_write('0' + digit);
+		abs -= digit * divider;
+		divider /= 10;
+		i++;
 	}
-	return (i);
+
+	return (i + is_negative);
 }
+
+
+
+
 
 
