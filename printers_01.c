@@ -1,15 +1,14 @@
 #include "main.h"
 
-
 /**
   * print_chr - Prints a char
   * @args: A list of variadic arguments
   *
   * Return: The length of the character
   */
-int print_chr(va_list args)
+int print_chr(va_list args, char *buffer, int *buffer_index)
 {
-	_write(va_arg(args, int));
+	_write(va_arg(args, int), buffer, buffer_index);
 	return (1);
 }
 
@@ -19,7 +18,7 @@ int print_chr(va_list args)
   *
   * Return: The length of the string
   */
-int print_str(va_list args)
+int print_str(va_list args, char *buffer, int *buffer_index)
 {
 	char *arg = va_arg(args, char *);
 	int i = 0;
@@ -28,19 +27,19 @@ int print_str(va_list args)
 	{
 		while (arg[i])
 		{
-			_write(arg[i]);
+			_write(arg[i], buffer, buffer_index);
 			i++;
 		}
 
 		return (i);
 	}
 
-	_write('(');
-	_write('n');
-	_write('u');
-	_write('l');
-	_write('l');
-	_write(')');
+	_write('(', buffer, buffer_index);
+	_write('n', buffer, buffer_index);
+	_write('u', buffer, buffer_index);
+	_write('l', buffer, buffer_index);
+	_write('l', buffer, buffer_index);
+	_write(')', buffer, buffer_index);
 	return (6);
 }
 
@@ -49,14 +48,14 @@ int print_str(va_list args)
   * @args: A list of variadic arguments
   * Return: The number of printed chars
   */
-int print_int(va_list args)
+int print_int(va_list args, char *buffer, int *buffer_index)
 {
     int i = 0;
     int num = va_arg(args, int);
     unsigned int abs, divisor = 1;
 
     if (num < 0) {
-        _write('-');
+        _write('-', buffer, buffer_index);
         abs = -num;
         i = 1;
     } else {
@@ -68,7 +67,7 @@ int print_int(va_list args)
     }
 
     while (divisor != 0) {
-        _write('0' + abs / divisor);
+        _write('0' + abs / divisor, buffer, buffer_index);
         abs %= divisor;
         divisor /= 10;
         i++;
@@ -77,9 +76,5 @@ int print_int(va_list args)
     return i;
 
 }
-
-
-
-
 
 

@@ -7,9 +7,9 @@
   *
   * Return: The length of the format
   */
-int _print_format(const char *format, va_list args)
+int _print_format(const char *format, va_list args, char *buffer, int *buffer_index)
 {
-	int (*sp_func)(va_list);
+	int (*sp_func)(va_list, char *buffer, int *buffer_index);
 	int count = 0, i;
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
@@ -24,26 +24,35 @@ int _print_format(const char *format, va_list args)
 				sp_func = get_sp_func(format[i + 1]);
 				if (sp_func == NULL)
 				{
-					_write(format[i]);
+					buffer[*buffer_index] = format[i];
+					(*buffer_index)++;
 					count++;
 				}
 				else
 				{
-					count = count + sp_func(args);
+					count += sp_func(args, buffer, buffer_index);
 					i++;
 				}
 			}
 			else
 			{
-				_write(format[i]);
+				buffer[*buffer_index] = format[i];
+				(*buffer_index)++;
 				count++;
 				i++;
 			}
 		}
 		else
 		{
-			_write(format[i]);
+			buffer[*buffer_index] = format[i];
+			(*buffer_index)++;
 			count++;
+		}
+		if (*buffer_index >= 1024)
+		{
+			write(1, buffer, 1024);
+			count+= 1024;
+			*buffer_index = 0;
 		}
 	}
 	va_end(args);
