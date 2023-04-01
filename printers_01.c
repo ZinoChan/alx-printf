@@ -51,33 +51,31 @@ int print_str(va_list args)
   */
 int print_int(va_list args)
 {
-	int num = va_arg(args, int), i = 0, digit;
-	int is_negative = num < 0;
-	unsigned int abs = is_negative ? -num : num;
-	unsigned int divider = 1;
+    int i = 0;
+    int num = va_arg(args, int);
+    unsigned int abs, divisor = 1;
 
-	if (abs <= 9)
-	{
-		_write(is_negative ? '-' : '0' + abs);
-		return (1 + is_negative);
-	}
+    if (num < 0) {
+        _write('-');
+        abs = -num;
+        i = 1;
+    } else {
+        abs = num;
+    }
 
-	while (divider <= abs / 10)
-		divider *= 10;
+    while (abs / divisor > 9) {
+        divisor *= 10;
+    }
 
-	if (is_negative)
-		_write('-');
+    while (divisor != 0) {
+        _write('0' + abs / divisor);
+        abs %= divisor;
+        divisor /= 10;
+        i++;
+    }
 
-	while (divider > 0)
-	{
-		digit = abs / divider;
-		_write('0' + digit);
-		abs -= digit * divider;
-		divider /= 10;
-		i++;
-	}
+    return i;
 
-	return (i + is_negative);
 }
 
 
