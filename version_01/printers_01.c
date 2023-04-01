@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
   * print_chr - Prints a char
   * @args: A list of variadic arguments
@@ -50,29 +51,35 @@ int print_str(va_list args)
   */
 int print_int(va_list args)
 {
-	int count = 0;
-	int n = va_arg(args, int);
+    int i = 0;
+    int num = va_arg(args, int);
+    unsigned int abs, divisor = 1;
 
-	if (n < 0)
-	{
-		_write('-');
-		n = -n;
-		count++;
-	}
-	count += recursive_print(n);
-	return (count);
+    if (num < 0) {
+        _write('-');
+        abs = -num;
+        i = 1;
+    } else {
+        abs = num;
+    }
+
+    while (abs / divisor > 9) {
+        divisor *= 10;
+    }
+
+    while (divisor != 0) {
+        _write('0' + abs / divisor);
+        abs %= divisor;
+        divisor /= 10;
+        i++;
+    }
+
+    return i;
+
 }
 
-/**
-  * recursive_print - Prints a integer
-  * @n: integer to print
-  * Return: Nothing
-  */
-int recursive_print(int n)
-{
-	if (n / 10)
-		recursive_print(n / 10);
 
-	_write((n % 10) + '0');
-	return (1);
-}
+
+
+
+

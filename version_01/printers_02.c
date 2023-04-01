@@ -10,40 +10,17 @@
 
 int print_binary(va_list args)
 {
-	int n = va_arg(args, int);
+	unsigned int num = va_arg(args, int);
 	int count = 0;
 
-	if (n < 0)
+	if (num < 1)
 	{
-		_write('1');
-		n = -n;
-		count++;
-	}
-
-	count += print_binary_helper(n);
-	return (count);
-}
-
-/**
- * print_binary_helper - Prints the binary format of a given number
- * @n: The number to convert
- *
- * Return: The number of printed digits
- */
-int print_binary_helper(int n)
-{
-	int count;
-
-	if (n <= 1)
-	{
-		_write(n + '0');
+		_write('0' + 0);
 		return (1);
 	}
-
-	count = print_binary_helper(n / 2);
-	_write((n % 2) + '0');
-
-	return (count + 1);
+	count = get_digit_count(num, 2);
+	write_number(num, 2);
+	return (count);
 }
 
 
