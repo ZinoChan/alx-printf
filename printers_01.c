@@ -71,7 +71,7 @@ int print_int(va_list args)
 int recursive_print(int n)
 {
 	if (n / 10)
-		recursive_print(n / 10);
+		return (1 + recursive_print(n / 10));
 
 	_write((n % 10) + '0');
 	return (1);
