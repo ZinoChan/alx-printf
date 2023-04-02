@@ -47,7 +47,7 @@ char *buffer, int *buffer_index)
 			(*buffer_index)++;
 			count++;
 		}
-		count += is_printable(buffer, buffer_index);
+		is_printable(buffer, buffer_index);
 	}
 	va_end(args);
 	return (count);
@@ -58,16 +58,14 @@ char *buffer, int *buffer_index)
   * is_printable - Prints the buffer when it's full
   * @buffer: The buffer to write the number to.
   * @buffer_index: A pointer to an index in the buffer to write to.
-  * Return: The length of the printed chars
+  * Return: Tvoid
   */
 
-int is_printable(char *buffer, int *buffer_index)
+void is_printable(char *buffer, int *buffer_index)
 {
 	if (*buffer_index >= BUFFER_SIZE)
 	{
 		write(1, buffer, BUFFER_SIZE);
 		*buffer_index = 0;
-		return (BUFFER_SIZE);
-	} else
-		return (0);
+	}
 }

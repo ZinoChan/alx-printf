@@ -40,7 +40,7 @@ int print_int(va_list args, char *buffer, int *buffer_index);
 int recursive_print(int n, char *buffer, int *buffer_index);
 int print_binary(va_list args, char *buffer, int *buffer_index);
 int print_binary_helper(int n, char *buffer, int *buffer_index);
-int is_printable(char *buffer, int *buffer_index);
+void is_printable(char *buffer, int *buffer_index);
 
 /*Helpers*/
 int get_digit_count(unsigned long int num, unsigned int base);
